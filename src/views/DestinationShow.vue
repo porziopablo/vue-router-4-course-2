@@ -28,8 +28,14 @@ export default {
     },
     async created() {
         this.initData();
-        // Chapter 2 - Lesson 16 - React to Param Changes:
-        // another approach to re-fire the hook when the view changes, instead of adding a key to the router-view in App.vue
+        /**
+         * Chapter 2 - Lesson 16:
+         * 
+         * This hook was removed at the end of the lesson, but I wanted to keep using the dummy API for all the data because
+         * it's more real than using a JSON.
+        */ 
+
+        // Another approach to re-fire the hook when the view changes, instead of adding a key to the router-view in App.vue 
         // this.$watch(() => this.$route.params, this.initData); 
     }
 };
