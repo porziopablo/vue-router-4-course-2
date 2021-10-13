@@ -23,5 +23,5 @@
                 destinations: sourceData.destinations,
             }
         }
-    }
+    };
 </script>
