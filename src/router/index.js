@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from '@/views/Home.vue';
 
+import sourceData from '@/data.json';
+
 function getRouteProps(route) {
     return {
         ...route.params,
@@ -25,6 +27,18 @@ const routes = [
         name: 'destination.show',
         component: () => import ('@/views/DestinationShow.vue'),
         props: getRouteProps,
+        beforeEnter(to) {
+            const exists = sourceData.destinations.find(
+                destination => destination.id === parseInt(to.params.id)
+            );
+
+            if (!exists) return {
+                name: 'NotFound',
+                params: { pathMatch: to.path.split('/').slice(1) },
+                query: to.query,
+                hash: to.hash,
+            };
+        },
         children: [
             {
                 path: ':experienceSlug',
