@@ -10,7 +10,16 @@ function getRouteProps(route) {
 };
 
 const routes = [
-    { path: '/', name: 'Home', component: Home },
+    {
+        path: '/',
+        name: 'Home',
+        component: Home,
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('@/views/NotFound.vue'),
+    },
     {
         path: '/destination/:id/:slug',
         name: 'destination.show',
