@@ -19,7 +19,7 @@
         data () {
             return {
                 destinations: [],
-            }
+            };
         },
         /**
          * Chapter 2 - Lesson 16:
@@ -34,8 +34,8 @@
 
             for (let country of countries) {
                 const countryData = await fetch(`https://travel-dummy-api.netlify.app/${country}`);
-                destinations.push(await countryData.json())
-            }
+                destinations.push(await countryData.json());
+            };
             
             this.destinations = destinations;
         }
