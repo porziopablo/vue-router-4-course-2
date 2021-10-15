@@ -36,6 +36,14 @@ const routes = [
         },
     },
     {
+        path: '/invoices',
+        name: 'invoices',
+        component: () => import('@/views/Invoices.vue'),
+        meta: {
+            requiresAuth: true,
+        },
+    },
+    {
         path: '/destination/:id/:slug',
         name: 'destination.show',
         component: () => import ('@/views/DestinationShow.vue'),
@@ -73,7 +81,7 @@ function scrollBehavior(to, from, savedPosition) {
 
 function checkIfRequiresAuth(to) {
     if (to.meta.requiresAuth && !window.user) {
-        return { name: 'login' };
+        return { name: 'login', query: { redirect: to.fullPath } };
     }
 };
 

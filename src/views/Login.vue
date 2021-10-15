@@ -26,8 +26,9 @@ export default {
              * However that is not covered by the course, so it's pretended that the user
              * logged in successfully.
             */
+            const redirectPath = this.$route.query.redirect || '/protected';
             window.user = this.username;
-            this.$router.push({ name: 'protected' });
+            this.$router.push(redirectPath);
         }
     }
 }
