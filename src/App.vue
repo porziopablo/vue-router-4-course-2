@@ -1,19 +1,31 @@
 <template>
   <TheNavigation />
   <div class="container">
-    <router-view :key="$route.params.slug" />
-    <!-- Another approach to re-fire the hook when the view changes, instead of
-    watching from inside the created() hook in DestinationShow.vue -->
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" :key="$route.params.slug"></component>
+      </transition>
+    </router-view>
   </div>
 </template>
-
 
 <script>
 import TheNavigation from '@/components/TheNavigation.vue';
 
 export default {
-    components: {
-      TheNavigation,
-    }
+  components: {
+    TheNavigation,
+  }
 };
 </script>
+
+<style lang="css">
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>
