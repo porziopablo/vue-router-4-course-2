@@ -12,24 +12,28 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+
 export default {
-    data() { 
+    setup() {
+        const router = useRouter();
+        const route = useRoute();
+
+        const username = ref('');
+        const password = ref('');
+
+        function login() {
+            window.user = username.value;
+            const redirectPath = route.query.redirect || '/protected';
+            router.push(redirectPath);
+        }
+
         return {
-            username: '',
-            password: '',
-        }
+            username,
+            password,
+            login,
+        };
     },
-    methods: {
-        login() {
-            /**
-             * This is where the real authentication against and API would happen. 
-             * However that is not covered by the course, so it's pretended that the user
-             * logged in successfully.
-            */
-            const redirectPath = this.$route.query.redirect || '/protected';
-            window.user = this.username;
-            this.$router.push(redirectPath);
-        }
-    }
 }
 </script>
