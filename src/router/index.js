@@ -50,10 +50,19 @@ const routes = [
     },
 ];
 
+function scrollBehavior(to, from, savedPosition) {
+    function waitUntilTransitionEnds(resolve) {
+        setTimeout(() => resolve({ top: 0, behaviour: 'smooth' }), 300);
+    }; 
+
+    return savedPosition || new Promise(waitUntilTransitionEnds);
+};
+
 const router = createRouter({
     history: createWebHistory(),
     routes,
     linkActiveClass: 'vue-school-active-link',
+    scrollBehavior,
 });
 
 export default router;
