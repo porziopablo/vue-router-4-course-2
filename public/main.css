@@ -124,6 +124,10 @@ a {
   margin: 10px;
 }
 
+.experience__description {
+  text-align: justify;
+}
+
 /*Modal Overlay*/
 .modal-overlay:before {
   content: "";

@@ -17,6 +17,7 @@
                 <ExperienceCard :experience="experience" />
             </router-link>
         </div>
+        <router-view />
     </section>
 </template>
 
@@ -29,6 +30,8 @@ export default {
     },
     props: {
         id: { type: Number, required: true },
+        slug: { type: String, default: '' },
+        experienceSlug: { type: String, default: '' },
     },
     data() {
         return {

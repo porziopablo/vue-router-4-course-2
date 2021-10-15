@@ -2,7 +2,7 @@
     <section>
         <h1>{{ experience.name }}</h1>
         <img :src="`/images/${experience.image}`" :alt="experience.name">
-        <p>{{ experience.description }}</p>
+        <p class="experience__description">{{ experience.description }}</p>
     </section>
 </template>
 
